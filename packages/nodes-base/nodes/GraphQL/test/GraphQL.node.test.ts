@@ -11,7 +11,7 @@ describe('GraphQL Node', () => {
 			.matchHeader('accept-encoding', 'gzip, compress, deflate, br')
 			.post(
 				'/graphql',
-				'{"query":"query {\\n  nodes(pagination: { limit: 1 }) {\\n    data {\\n      id\\n      attributes {\\n        name\\n        displayName\\n        description\\n        group\\n        codex\\n        createdAt\\n      }\\n    }\\n  }\\n}","variables":{},"operationName":null}',
+				'{"query":"query {\\n  nodes(pagination: { limit: 1 }) {\\n    data {\\n      id\\n      attributes {\\n        name\\n        displayName\\n        description\\n        group\\n        codex\\n        createdAt\\n      }\\n    }\\n  }\\n}","variables":{}}',
 			)
 			.reply(200, {
 				data: {
@@ -80,7 +80,7 @@ describe('GraphQL Node', () => {
 		};
 		const baseUrl = 'http://test';
 		nock(baseUrl)
-			.post('/graphql', '{"query":"query { foo }","variables":{},"operationName":null}')
+			.post('/graphql', '{"query":"query { foo }","variables":{}}')
 			.reply(401, {
 				errors: [
 					{
@@ -99,7 +99,7 @@ describe('GraphQL Node', () => {
 				expires_in: 3600,
 			});
 		nock(baseUrl)
-			.post('/graphql', '{"query":"query { foo }","variables":{},"operationName":null}')
+			.post('/graphql', '{"query":"query { foo }","variables":{}}')
 			.reply(200, {
 				data: {
 					foo: 'bar',
