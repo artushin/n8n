@@ -483,7 +483,7 @@ export class GraphQL implements INodeType {
 					};
 
 					if (jsonBody.operationName === '') {
-						jsonBody.operationName = null;
+						delete jsonBody.operationName;
 					}
 
 					requestOptions.json = true;
